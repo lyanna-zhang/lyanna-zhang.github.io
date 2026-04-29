@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lyanna Zhang — Product Manager · Builder</title>
+
+  <meta name="description" content="Lyanna Zhang — Product Manager. I've led features end-to-end at a travel unicorn and a startup, and built my own AI tools to solve real problems.">
+
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Lyanna Zhang — Product Manager · Builder">
+  <meta property="og:description" content="Lyanna Zhang — Product Manager. I've led features end-to-end at a travel unicorn and a startup, and built my own AI tools to solve real problems.">
+  <meta property="og:image"       content="lyanna.jpg">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23FFE14A'/><text x='50' y='78' text-anchor='middle' font-size='72' font-weight='900' font-family='Arial Black,sans-serif' fill='%23111'>L</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; color: #111; background: #f5f1e8; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      background:
+        radial-gradient(#111 1px, transparent 1.5px) 0 0 / 26px 26px,
+        #f5f1e8;
+      cursor: crosshair;
+    }
+
+    :root {
+      --y: #ffe14a;
+      --p: #ff7eb6;
+      --c: #7ee8fa;
+      --g: #c6ff4a;
+      --o: #ff8a3d;
+    }
+
+    /* ── shared primitives ── */
+    .stamp {
+      display: inline-block;
+      border: 3px solid #111;
+      padding: 6px 12px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      background: #fff;
+      box-shadow: 3px 3px 0 #111;
+    }
+
+    .badge-circle {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      border: 3px solid #111;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 12px; line-height: 1.15;
+      padding: 8px;
+      background: #fff;
+      box-shadow: 3px 3px 0 #111;
+    }
+
+    .btn {
+      border: 3px solid #111;
+      background: #fff;
+      padding: 10px 18px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 4px 4px 0 #111;
+      cursor: pointer;
+      text-decoration: none;
+      color: #111;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover  { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #111; }
+    .btn:active { transform: translate(2px, 2px);  box-shadow: 2px 2px 0 #111; }
+    .btn-d { background: #111; color: #fff; }
+    .btn-p { background: var(--p); }
+    .btn-c { background: var(--c); }
+    .btn-y { background: var(--y); }
+
+    .lift { transition: transform .18s ease, box-shadow .18s ease; }
+    .lift:hover { transform: translate(-3px, -3px) !important; box-shadow: 11px 11px 0 #111 !important; }
+
+    /* ── layout ── */
+    .page { max-width: 1200px; margin: 0 auto; padding: 32px 24px 80px; }
+
+    /* ── nav pill ── */
+    .navpill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      border: 3px solid #111;
+      border-radius: 999px;
+      padding: 6px 10px 6px 16px;
+      box-shadow: 4px 4px 0 #111;
+      width: fit-content;
+      margin: 0 auto 28px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .navpill .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--g);
+      border: 2px solid #111;
+      margin-right: 6px;
+    }
+    .navpill a {
+      color: #111;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: background .12s;
+    }
+    .navpill a:hover { background: var(--y); }
+    .navpill .me {
+      font-family: 'Archivo Black', sans-serif;
+      letter-spacing: .02em;
+      margin-right: 8px;
+    }
+    .navpill .lk {
+      margin-left: 6px;
+      background: #111;
+      color: #fff;
+      border-radius: 999px;
+      padding: 6px 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background .12s, color .12s;
+    }
+    .navpill .lk:hover { background: var(--p); color: #111; }
+
+    /* ── HERO / sticker wall ── */
+    .wall {
+      position: relative;
+      background:
+        radial-gradient(#11111122 1.4px, transparent 1.5px) 0 0 / 22px 22px,
+        #fff;
+      border: 4px solid #111;
+      box-shadow: 10px 10px 0 #111;
+      padding: 44px 36px 56px;
+      overflow: hidden;
+      border-radius: 6px;
+    }
+
+    .wall-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .name-block {
+      background: var(--y);
+      border: 4px solid #111;
+      padding: 22px 24px;
+      box-shadow: 6px 6px 0 #111;
+      display: inline-block;
+      transform: rotate(-1.5deg);
+      margin-bottom: 8px;
+    }
+    .name-block h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(48px, 7.5vw, 96px);
+      line-height: .95;
+      margin: 0;
+      letter-spacing: -.01em;
+    }
+    .name-block .role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      background: #111;
+      color: #fff;
+      display: inline-block;
+      padding: 5px 12px;
+      margin-top: 10px;
+      letter-spacing: .02em;
+    }
+
+    .blurb {
+      margin-top: 22px;
+      max-width: 540px;
+      background: #fff;
+      border: 4px solid #111;
+      padding: 20px 22px;
+      box-shadow: 6px 6px 0 #111;
+    }
+    .blurb p { margin: 0 0 10px; font-size: 16px; line-height: 1.6; }
+    .blurb p:last-child { margin: 0; }
+    .blurb b { background: var(--y); padding: 1px 4px; }
+
+    .hero-actions { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+
+    /* photo cluster */
+    .photo-cluster {
+      position: relative;
+      min-height: 480px;
+      padding: 28px 8px 20px;
+    }
+    .photo-card {
+      position: relative;
+      background: #fff;
+      border: 4px solid #111;
+      padding: 14px 14px 18px;
+      box-shadow: 10px 10px 0 #111;
+      transform: rotate(2deg);
+      width: 320px;
+      margin: 48px auto 0;
+    }
+    .photo-card .tape {
+      position: absolute;
+      top: -14px; left: 50%;
+      transform: translateX(-50%) rotate(-4deg);
+      width: 120px; height: 26px;
+      background: rgba(255, 225, 74, .78);
+      border: 2px solid rgba(0,0,0,.2);
+    }
+    .photo-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 3px solid #111;
+      background: #eee;
+    }
+    .photo-card .caption {
+      font-family: 'Caveat', cursive;
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1;
+    }
+
+    .float { position: absolute; z-index: 3; }
+    .float-arrow {
+      font-family: 'Caveat', cursive;
+      font-size: 36px;
+      font-weight: 700;
+      color: #111;
+      line-height: 1;
+    }
+    .photo-cluster .f-stamp-1  { top: -8px;   right: 6px;   transform: rotate(8deg); }
+    .photo-cluster .f-stamp-2  { bottom: 24px; left: -10px;  transform: rotate(-6deg); }
+    .photo-cluster .f-circle-1 { top: 36%;    right: -16px; transform: rotate(10deg); }
+    .photo-cluster .f-arrow-1  { top: 20px;   left: 4px;    transform: rotate(-12deg); }
+    .photo-cluster .f-arrow-2  { bottom: 2px;  right: -4px;  transform: rotate(8deg); }
+
+    .float-circle-sm {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      border: 3px solid #111;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 11px; line-height: 1.15;
+      background: var(--o);
+      color: #111;
+      box-shadow: 3px 3px 0 #111;
+    }
+
+    /* ── marquee ── */
+    .marquee {
+      margin: 36px 0 0;
+      background: #111;
+      color: #fff;
+      border: 4px solid #111;
+      overflow: hidden;
+      font-family: 'Archivo Black', sans-serif;
+      letter-spacing: .06em;
+      font-size: 14px;
+      padding: 12px 0;
+      box-shadow: 6px 6px 0 #111;
+    }
+    .marquee-track {
+      display: inline-flex;
+      gap: 42px;
+      white-space: nowrap;
+      animation: scroll 32s linear infinite;
+      padding-left: 42px;
+    }
+    .marquee-track > span { display: inline-flex; align-items: center; gap: 14px; }
+    .marquee-track i { font-style: normal; color: var(--y); }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── section labels ── */
+    .section-label { display: flex; align-items: center; gap: 14px; margin: 72px 0 26px; }
+    .section-label .num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 18px;
+      border: 3px solid #111;
+      background: #111;
+      color: var(--y);
+      padding: 6px 12px;
+      box-shadow: 3px 3px 0 var(--y);
+    }
+    .section-label h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 36px;
+      margin: 0;
+      line-height: 1;
+      letter-spacing: -.01em;
+    }
+    .section-label .scribble { position: relative; display: inline-block; }
+    .section-label .scribble::after {
+      content: "";
+      position: absolute;
+      left: -2%; right: -2%; bottom: -4px;
+      height: 10px;
+      background: var(--scribble, var(--y));
+      transform: skewX(-12deg);
+      z-index: -1;
+    }
+    .section-label .rule { flex: 1; height: 6px; background: #111; }
+
+    /* ── projects: polaroid grid ── */
+    .polas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 30px; padding: 14px 0; }
+    .pola {
+      background: #fff;
+      border: 4px solid #111;
+      padding: 14px 14px 18px;
+      box-shadow: 8px 8px 0 #111;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .pola:nth-child(1) { transform: rotate(-2.5deg); }
+    .pola:nth-child(2) { transform: rotate(1.5deg); }
+    .pola:nth-child(3) { transform: rotate(-1deg); }
+    .pola:hover { transform: rotate(0) translate(-3px, -3px); box-shadow: 11px 11px 0 #111; }
+
+    .pola .photo {
+      height: 170px;
+      border: 3px solid #111;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 72px;
+    }
+    .pola:nth-child(1) .photo { background: var(--y); }
+    .pola:nth-child(2) .photo { background: var(--c); }
+    .pola:nth-child(3) .photo { background: var(--p); }
+
+    /* ── Browser Mockup ── */
+    .browser-mock {
+      height: 170px; border: 3px solid #111;
+      overflow: hidden; display: flex; flex-direction: column;
+    }
+    .bm-chrome {
+      background: #e8e8e8; border-bottom: 2px solid #111;
+      padding: 0 8px; display: flex; align-items: center;
+      gap: 6px; height: 28px; flex-shrink: 0;
+    }
+    .bm-dots { display: flex; gap: 4px; align-items: center; }
+    .bm-dots span { display: block; width: 9px; height: 9px; border-radius: 50%; }
+    .bm-dots span:nth-child(1) { background: #ff5f57; }
+    .bm-dots span:nth-child(2) { background: #febc2e; }
+    .bm-dots span:nth-child(3) { background: #28c840; }
+    .bm-url {
+      flex: 1; background: #fff; border: 1.5px solid #bbb; border-radius: 3px;
+      height: 16px; font-family: 'Space Mono', monospace; font-size: 8px;
+      color: #999; padding: 0 5px; display: flex; align-items: center;
+      overflow: hidden; white-space: nowrap;
+    }
+    .bm-screen { flex: 1; overflow: hidden; position: relative; }
+
+    /* France Rent — dark navy */
+    .site-rent {
+      background: #1b2e55; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 8px; padding: 8px;
+    }
+    .site-rent .bm-mock-label {
+      font-family: 'Space Mono', monospace; font-size: 8px;
+      color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase;
+    }
+    .site-rent .bm-mock-input {
+      background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.25);
+      border-radius: 3px; padding: 4px 10px; font-size: 10.5px;
+      color: rgba(255,255,255,0.85); font-family: 'Space Grotesk', sans-serif; width: 82%;
+    }
+    .site-rent .bm-mock-badge {
+      background: var(--y); border: 2px solid #111;
+      padding: 3px 10px; font-family: 'Archivo Black', sans-serif;
+      font-size: 12px; color: #111; white-space: nowrap;
+    }
+
+    /* Fautes — mistake database */
+    .site-french {
+      background: #f5f0e8; display: flex; flex-direction: column; overflow: hidden;
+    }
+    .bm-db-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 5px 8px; background: #1a1a2e; border-bottom: 1.5px solid #111; flex-shrink: 0;
+    }
+    .bm-db-title {
+      font-family: 'Archivo Black', sans-serif; font-size: 9px;
+      color: #fff; letter-spacing: 2px;
+    }
+    .bm-db-count {
+      font-family: 'Space Mono', monospace; font-size: 7px; color: rgba(255,255,255,0.55);
+    }
+    .bm-db-row {
+      display: flex; align-items: center; gap: 5px;
+      padding: 5px 8px; border-bottom: 1px solid rgba(0,0,0,0.08);
+      font-family: 'Space Mono', monospace; font-size: 7.5px;
+    }
+    .bm-db-row-dim { opacity: 0.45; }
+    .bm-err { color: #cc2222; text-decoration: line-through; flex-shrink: 0; }
+    .bm-fix { color: #2a7a4b; flex: 1; }
+    .bm-cat {
+      background: #e4dfd6; border: 1px solid #bbb; border-radius: 8px;
+      padding: 1px 5px; font-size: 6.5px; color: #666; white-space: nowrap; flex-shrink: 0;
+    }
+
+    /* SkinPair — clean white */
+    .site-skin {
+      background: #fafafa; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 8px; padding: 8px;
+    }
+    .site-skin .bm-mock-title {
+      font-family: 'Archivo Black', sans-serif; font-size: 10px;
+      color: #111; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .bm-chips { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+    .bm-chip {
+      font-family: 'Space Mono', monospace; font-size: 8px;
+      padding: 2px 6px; border-radius: 10px; border: 1.5px solid;
+    }
+    .bm-chip-ok  { background: #e8f5e2; border-color: #4a9c32; color: #2d6020; }
+    .bm-chip-warn{ background: #fff0e0; border-color: #d4831a; color: #8a4c00; }
+    .bm-chip-err { background: #ffe8e8; border-color: #cc2222; color: #881111; }
+
+    .pola .tape {
+      position: absolute;
+      width: 96px; height: 24px;
+      background: rgba(255, 225, 74, .7);
+      border: 2px solid rgba(0,0,0,.22);
+      top: -12px; left: 50%;
+      transform: translateX(-50%) rotate(-3deg);
+    }
+    .pola:nth-child(2) .tape { background: rgba(126, 232, 250, .7); }
+    .pola:nth-child(3) .tape { background: rgba(255, 126, 182, .7); }
+
+    .pola h4 { font-family: 'Archivo Black', sans-serif; font-size: 22px; margin: 6px 0 0; line-height: 1.15; }
+    .pola .sub { font-family: 'Caveat', cursive; font-size: 22px; font-weight: 700; margin: 0; line-height: 1.1; }
+    .pola p { font-size: 14.5px; line-height: 1.55; margin: 4px 0 0; color: #222; }
+    .pola .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .pola .tag-chip {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      border: 2px solid #111;
+      padding: 2px 8px;
+      background: #fff;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+    .pola .cta {
+      margin-top: auto;
+      align-self: flex-start;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      border: 3px solid #111;
+      padding: 7px 13px;
+      text-decoration: none;
+      color: #111;
+      background: #fff;
+      box-shadow: 3px 3px 0 #111;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s;
+    }
+    .pola .cta:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 #111; background: var(--y); }
+
+    /* ── experience grid ── */
+    .xpgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .xp {
+      background: #fff;
+      border: 4px solid #111;
+      padding: 22px;
+      box-shadow: 8px 8px 0 #111;
+      position: relative;
+    }
+    .xp:nth-child(1) { background: var(--y); }
+    .xp:nth-child(2) { background: var(--c); }
+    .xp:nth-child(3) { background: var(--p); }
+    .xp:nth-child(4) { background: var(--g); }
+
+    .xp h5 { font-family: 'Archivo Black', sans-serif; font-size: 24px; margin: 0; line-height: 1.15; }
+    .xp .role { font-family: 'Caveat', cursive; font-size: 24px; font-weight: 700; margin: 2px 0 8px; line-height: 1.1; }
+    .xp .period {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      background: #111;
+      color: #fff;
+      display: inline-block;
+      padding: 4px 9px;
+      margin-bottom: 12px;
+      letter-spacing: .04em;
+    }
+    .xp p { font-size: 15px; line-height: 1.6; margin: 0; color: #111; }
+    .xp .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .xp .tag-chip {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      border: 2px solid #111;
+      padding: 3px 9px;
+      background: #fff;
+      letter-spacing: .03em;
+      transform: rotate(-2deg);
+    }
+    .xp .tags .tag-chip:nth-child(2) { transform: rotate(2deg); }
+    .xp .tags .tag-chip:nth-child(3) { transform: rotate(-1deg); }
+    .xp .stamp-tr {
+      position: absolute;
+      top: -14px; right: -14px;
+      background: #111;
+      color: var(--y);
+      transform: rotate(8deg);
+    }
+    .xp:nth-child(2) .stamp-tr { color: var(--c);  transform: rotate(-6deg); }
+    .xp:nth-child(3) .stamp-tr { color: var(--p);  transform: rotate(8deg); }
+    .xp:nth-child(4) .stamp-tr { color: var(--g);  transform: rotate(-6deg); }
+
+    /* ── contact ── */
+    .contact {
+      background: #111;
+      border: 4px solid #111;
+      padding: 56px 36px;
+      text-align: center;
+      box-shadow: 10px 10px 0 var(--y);
+      margin-top: 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(48px, 7vw, 88px);
+      margin: 0 0 14px;
+      line-height: .95;
+      letter-spacing: -.01em;
+      color: #fff;
+    }
+    .contact .scribble::after { background: var(--y); height: 14px; }
+    .contact .lead { font-size: 18px; max-width: 540px; margin: 0 auto 22px; line-height: 1.5; color: rgba(255,255,255,0.72); }
+    .contact .links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .contact .float-c { position: absolute; }
+    .contact .c-1 { top: 24px;    left: 24px;  transform: rotate(-8deg); }
+    .contact .c-2 { bottom: 24px; right: 24px; transform: rotate(6deg); }
+
+    /* ── footer ── */
+    footer {
+      margin-top: 30px;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+    }
+
+    /* ── responsive ── */
+    @media (max-width: 900px) {
+      .wall-grid       { grid-template-columns: 1fr; }
+      .photo-cluster   { min-height: auto; padding: 10px 0 20px; }
+      .polas           { grid-template-columns: 1fr; }
+      .xpgrid          { grid-template-columns: 1fr; }
+      .name-block h1   { font-size: 48px; }
+      .navpill         { font-size: 13px; }
+      .navpill a       { padding: 5px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <nav class="navpill">
+    <span class="dot"></span>
+    <span class="me">LYANNA Z.</span>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+    <a class="lk" href="https://www.linkedin.com/in/yujing-zhang-lyanna/" target="_blank">LinkedIn ↗</a>
+  </nav>
+
+  <!-- ════ HERO / STICKER WALL ════ -->
+
+  <section class="wall">
+    <div class="wall-grid">
+
+      <!-- left: name + blurb -->
+      <div>
+        <div class="name-block">
+          <h1>LYANNA<br>ZHANG.</h1>
+          <span class="role">Product Manager · Builder · Data-driven</span>
+        </div>
+
+        <div class="blurb">
+          <p><b>Hi! I'm Lyanna</b> — a product manager who believes great products start with real problems.</p>
+          <p>I've led product cycles end-to-end at a travel-tech unicorn, built automation tools from scratch at a startup, and shipped my own products to solve problems I ran into in real life. I like to build — with teams, with data, and increasingly, with AI.</p>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-d" href="#projects">↓ See what I built</a>
+          <a class="btn btn-p" href="#experience">Experience</a>
+          <a class="btn btn-c" href="#contact">Say hello →</a>
+        </div>
+      </div>
+
+      <!-- right: photo cluster -->
+      <div class="photo-cluster">
+        <span class="float f-stamp-1 stamp" style="background:var(--y)">★ Building with AI</span>
+        <span class="float f-arrow-1 float-arrow">↘ that's me!</span>
+
+        <div class="photo-card lift">
+          <span class="tape"></span>
+          <img src="lyanna.jpg" alt="Lyanna Zhang">
+          <div class="caption">yes I'm this smiley in person 😄</div>
+        </div>
+
+        <span class="float f-circle-1 float-circle-sm">SHIPS<br>FAST ↑</span>
+        <span class="float f-stamp-2 stamp" style="background:var(--g)">PM · Builder</span>
+        <span class="float f-arrow-2 float-arrow" style="font-size:28px">say hi! ↗</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════ MARQUEE ════ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>PRODUCT MANAGER <i>///</i></span>
+      <span>0-TO-1 BUILDER <i>///</i></span>
+      <span>DATA-DRIVEN <i>///</i></span>
+      <span>SHIPS END-TO-END <i>///</i></span>
+      <span>PROBLEM FIRST <i>///</i></span>
+      <span>AI-POWERED TOOLS <i>///</i></span>
+      <span>VIBE CODING ✦ <i>///</i></span>
+      <span>USER OBSESSED <i>///</i></span>
+      <span>PRODUCT MANAGER <i>///</i></span>
+      <span>0-TO-1 BUILDER <i>///</i></span>
+      <span>DATA-DRIVEN <i>///</i></span>
+      <span>SHIPS END-TO-END <i>///</i></span>
+      <span>PROBLEM FIRST <i>///</i></span>
+      <span>AI-POWERED TOOLS <i>///</i></span>
+      <span>VIBE CODING ✦ <i>///</i></span>
+      <span>USER OBSESSED <i>///</i></span>
+    </div>
+  </div>
+
+  <!-- ════ PROJECTS ════ -->
+  <div class="section-label" id="projects">
+    <span class="num">01</span>
+    <h2><span class="scribble" style="--scribble:var(--y)">Things I Built</span></h2>
+    <span class="rule"></span>
+  </div>
+
+  <div class="polas">
+    <article class="pola">
+      <span class="tape"></span>
+      <div class="browser-mock">
+        <div class="bm-chrome">
+          <div class="bm-dots"><span></span><span></span><span></span></div>
+          <div class="bm-url">fr-rent-benchmark.vercel.app</div>
+        </div>
+        <div class="bm-screen site-rent">
+          <div class="bm-mock-label">Paris Rent Index</div>
+          <div class="bm-mock-input">Paris 10e · 45 m² · Unfurnished</div>
+          <div class="bm-mock-badge">€1,240 / mo · Fair ✓</div>
+        </div>
+      </div>
+      <h4>🏠 France Rent Benchmark</h4>
+      <p class="sub">Know if your rent is fair.</p>
+      <p>I was apartment-hunting in Paris with no way to tell if rents were reasonable — so I built a tool using 104,700 official government data points to answer that.</p>
+      <div class="tags">
+        <span class="tag-chip">Data Tool</span>
+        <span class="tag-chip">Real Estate</span>
+      </div>
+      <a class="cta" href="https://fr-rent-benchmark.vercel.app/" target="_blank">Live Demo ↗</a>
+    </article>
+
+    <article class="pola">
+      <span class="tape"></span>
+      <div class="browser-mock">
+        <div class="bm-chrome">
+          <div class="bm-dots"><span></span><span></span><span></span></div>
+          <div class="bm-url">french-practice-mistake-database.vercel.app</div>
+        </div>
+        <div class="bm-screen site-french">
+          <div class="bm-db-header">
+            <span class="bm-db-title">FAUTES</span>
+            <span class="bm-db-count">23 errors logged</span>
+          </div>
+          <div class="bm-db-row">
+            <span class="bm-err">suis allez</span>
+            <span class="bm-fix">→ suis allé</span>
+            <span class="bm-cat">conjugation</span>
+          </div>
+          <div class="bm-db-row">
+            <span class="bm-err">que je vais</span>
+            <span class="bm-fix">→ que j'aille</span>
+            <span class="bm-cat">subjonctif</span>
+          </div>
+          <div class="bm-db-row bm-db-row-dim">
+            <span class="bm-err">le weekend</span>
+            <span class="bm-fix">→ le week-end</span>
+            <span class="bm-cat">spelling ×4</span>
+          </div>
+        </div>
+      </div>
+      <h4>🇫🇷 Fautes</h4>
+      <p class="sub">Your French mistakes, finally catalogued.</p>
+      <p>I kept making the same grammar errors and forgetting them. So I built a tool where I can practice with AI — and every correction gets stored in a personal database I can actually learn from.</p>
+      <div class="tags">
+        <span class="tag-chip">AI</span>
+        <span class="tag-chip">Language Learning</span>
+      </div>
+      <a class="cta" href="https://french-practice-mistake-database.vercel.app/" target="_blank">Live Demo ↗</a>
+    </article>
+
+    <article class="pola">
+      <span class="tape"></span>
+      <div class="browser-mock">
+        <div class="bm-chrome">
+          <div class="bm-dots"><span></span><span></span><span></span></div>
+          <div class="bm-url">skincare-pairing-analyzer.vercel.app</div>
+        </div>
+        <div class="bm-screen site-skin">
+          <div class="bm-mock-title">Ingredient Analysis</div>
+          <div class="bm-chips">
+            <span class="bm-chip bm-chip-ok">Niacinamide ✓</span>
+            <span class="bm-chip bm-chip-warn">Vit C ⚠</span>
+            <span class="bm-chip bm-chip-ok">Hyaluronic ✓</span>
+            <span class="bm-chip bm-chip-err">AHA + Retinol ✗</span>
+          </div>
+        </div>
+      </div>
+      <h4>🧴 SkinPair</h4>
+      <p class="sub">Know what to mix. Know what to skip.</p>
+      <p>I had six serums and no idea which ones I could layer together. Looking up every ingredient pair one by one wasn't working — so I built a tool that analyzes your whole shelf at once.</p>
+      <div class="tags">
+        <span class="tag-chip">AI</span>
+        <span class="tag-chip">Consumer Health</span>
+      </div>
+      <a class="cta" href="https://skincare-pairing-analyzer.vercel.app/" target="_blank">Live Demo ↗</a>
+    </article>
+  </div>
+
+  <!-- ════ EXPERIENCE ════ -->
+  <div class="section-label" id="experience">
+    <span class="num" style="box-shadow:3px 3px 0 var(--p)">02</span>
+    <h2><span class="scribble" style="--scribble:var(--p)">Experience</span></h2>
+    <span class="rule"></span>
+  </div>
+
+  <div class="xpgrid">
+    <article class="xp lift">
+      <h5>Klook</h5>
+      <p class="role">Product Manager</p>
+      <span class="period">Jul – Sep 2025 · Shenzhen</span>
+      <p>Led end-to-end product cycles across platform-level features — from defining requirements and aligning cross-functional teams, to running a controlled test to settle a UX debate with data, and owning it through launch.</p>
+      <div class="tags">
+        <span class="tag-chip">Travel-tech Unicorn</span>
+        <span class="tag-chip">50M+ MAU</span>
+        <span class="tag-chip">Platform</span>
+      </div>
+    </article>
+
+    <article class="xp lift">
+      <h5>GuestReady</h5>
+      <p class="role">Product Manager Assistant</p>
+      <span class="period">Mar – Jun 2025 · Paris</span>
+      <p>I took a lot of initiative here — building an automation pipeline to surface user insights, running an A/B test to improve submission rates, and shipping a booking feature from research to production.</p>
+      <div class="tags">
+        <span class="tag-chip">Short-term Rental</span>
+        <span class="tag-chip">Startup</span>
+        <span class="tag-chip">A/B Test</span>
+      </div>
+    </article>
+
+    <article class="xp lift">
+      <h5>Mercedes-Benz Mobility</h5>
+      <p class="role">Product &amp; Market Mgmt</p>
+      <span class="period">Apr – Sep 2024 · Stuttgart</span>
+      <p>Worked on scaling an EV charging product across new markets — supporting go-to-market operations, building product documentation, and tracking post-launch performance through dashboards.</p>
+      <div class="tags">
+        <span class="tag-chip">EV Charging</span>
+        <span class="tag-chip">Global Rollout</span>
+        <span class="tag-chip">GTM</span>
+      </div>
+    </article>
+
+    <article class="xp lift">
+      <h5>Volkswagen Group</h5>
+      <p class="role">Controlling</p>
+      <span class="period">Apr – Sep 2023 · Beijing</span>
+      <p>My first experience inside a large-scale enterprise — supporting cost optimization projects and financial reporting cycles, and building the data intuition that still informs how I think about product decisions.</p>
+      <div class="tags">
+        <span class="tag-chip">Finance</span>
+        <span class="tag-chip">Operations</span>
+        <span class="tag-chip">Enterprise</span>
+      </div>
+    </article>
+  </div>
+
+  <!-- ════ CONTACT ════ -->
+  <section class="contact" id="contact">
+    <span class="float-c c-1 stamp" style="background:var(--y)">let's chat ✦</span>
+    <span class="float-c c-2 badge-circle" style="background:var(--g);width:88px;height:88px">REPLY<br>WITHIN<br>24H ⚡</span>
+
+    <h2><span class="scribble">Say hello.</span></h2>
+    <p class="lead">
+      Up for product chats, interesting problems, or just a hello.
+    </p>
+    <div class="links">
+      <button class="btn btn-y email-copy" onclick="(function(b){navigator.clipboard.writeText('lyanna.yujingzhang@gmail.com');var o=b.innerHTML;b.innerHTML='✓ Copied!';setTimeout(function(){b.innerHTML=o},2000)})(this)">✉ lyanna.yujingzhang@gmail.com</button>
+      <a class="btn" href="https://www.linkedin.com/in/yujing-zhang-lyanna/" target="_blank">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/lyanna-zhang" target="_blank">GitHub ↗</a>
+    </div>
+  </section>
+
+  <footer>// portfolio v3 · 2026 · made with care &amp; lots of sticky notes</footer>
+</div>
+
+</body>
+</html>
